@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Operadores aritméticos em Javascript</title>
+</head>
+<body>
+	<script>
+		//A typical arithmetic operation operates on two numbers.The two numbers can be literals
+		var x = 100 + 50;
+
+		//or variables
+		var x = a + b;
+
+		//ou expressões
+		var x = (100 + 50) * a;
+
+		/*The numbers (in an arithmetic operation) are called operands. The operation (to be performed between the two operands) is defined by an operator.*/
+		// 100 (operando)	+ (operador)	50 (operando)
+
+		//The addition operator (+) adds numbers.
+		var x = 5;
+		var y = 2;
+		var z = x + y;
+		//O resultado será 7.
+
+		//The subtraction operator (-) subtracts numbers.
+		var x = 5;
+		var y = 2;
+		var z = x - y;
+		//O resultado será 3.
+
+		//The multiplication operator (*) multiplies numbers.
+		var x = 5;
+		var y = 2;
+		var z = x * y;
+		//O resultado será 10.
+
+		//The division operator (/) divides numbers.
+		var x = 5;
+		var y = 2;
+		var z = x / y;
+		//O resultado será 2.5
+
+		//The modulus operator (%) returns the division remainder.
+		var x = 5;
+		var y = 2;
+		var z = x % y;
+		//O resultado será 1.
+		//In arithmetic, the division of two integers produces a quotient and a remainder. In mathematics, the result of a modulo operation is the remainder of an arithmetic division.
+
+		//The increment operator (++) increments numbers.
+		var x = 5;
+		x++;
+		var z = x;
+		//O resultado será 6.
+
+		//The decrement operator (--) decrements numbers.
+		var x = 5;
+		x--;
+		var z = x;
+		//O resultado será 4.
+
+		//The exponentiation operator (**) raises the first operand to the power of the second operand.
+		var x = 5;
+		var z = x ** 3;
+		//O resultado será 125.
+
+		//x ** y produces the same result as Math.pow(x,y)
+		var x = 5;
+		var z = Math.pow(x,3);
+		//O resultado será 125.
+
+		//Operator precedence describes the order in which operations are performed in an arithmetic expression.
+		var x = 100 + 50 * 3;
+		//O resultador será: 250.
+
+		/*
+		Is the result of example above the same as 150 * 3, or is it the same as 100 + 150?
+		Is the addition or the multiplication done first?
+		As in traditional school mathematics, the multiplication is done first.
+		Multiplication (*) and division (/) have higher precedence than addition (+) and subtraction (-).
+		And (as in school mathematics) the precedence can be changed by using parentheses.
+		*/
+		var x = (100 + 50) * 3;
+		//O resultado será 450.
+
+		//When using parentheses, the operations inside the parentheses are computed first. When many operations have the same precedence (like addition and subtraction), they are computed from left to right.
+		var x = 100 + 50 - 3;
+		//O resultado será: 147.
+
+	</script>
+</body>
+</html>
