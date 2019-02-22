@@ -33,6 +33,13 @@ JavaScript keywords are reserved words. Reserved words cannot be used as names f
 *=	x *= y	x = x * y
 /=	x /= y	x = x / y
 %=	x %= y	x = x % y
+<<=	x <<= y	x = x << y
+>>=	x >>= y	x = x >> y
+>>>=	x >>>= y	x = x >>> y
+&=	x &= y	x = x & y
+^=	x ^= y	x = x ^ y
+|=	x |= y	x = x | y
+**=	x **= y	x = x ** y
 
 -> Operações de comparação em Javascript:
 ==	equal to
