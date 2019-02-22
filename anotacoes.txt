@@ -1,4 +1,4 @@
-Palavras-chave em Javascript:
+-> Palavras-chave em Javascript:
 JavaScript statements often start with a keyword to identify the JavaScript action to be performed.
 
 Here is a list of some of the keywords you will learn about in this tutorial:
@@ -14,3 +14,54 @@ switch	Marks a block of statements to be executed, depending on different cases
 try ... catch	Implements error handling to a block of statements
 var	Declares a variable
 JavaScript keywords are reserved words. Reserved words cannot be used as names for variables.
+
+-> Operadores aritméticos em Javascript:
+-Arithmetic operators are used to perform arithmetic on numbers
++	Addition
+-	Subtraction
+*	Multiplication
+**	Exponentiation (ES2016)
+/	Division
+%	Modulus (Division Remainder)
+++	Increment
+--	Decrement
+
+-> Operadores de atribuição em Javascript:
+=	x = y	x = y
++=	x += y	x = x + y
+-=	x -= y	x = x - y
+*=	x *= y	x = x * y
+/=	x /= y	x = x / y
+%=	x %= y	x = x % y
+
+-> Operações de comparação em Javascript:
+==	equal to
+===	equal value and equal type
+!=	not equal
+!==	not equal value or not equal type
+>	greater than
+<	less than
+>=	greater than or equal to
+<=	less than or equal to
+?	ternary operator
+
+-> Operadores lógicos em Javascript:
+&&	logical and
+||	logical or
+!	logical not
+
+-> Operadores de tipo em Javascript:
+typeof	Returns the type of a variable
+instanceof	Returns true if an object is an instance of an object type.
+
+-> Operadores binários em Javascript:
+Bit operators work on 32 bits numbers.
+Any numeric operand in the operation is converted into a 32 bit number. The result is converted back to a JavaScript number.
+&	AND	5 & 1	0101 & 0001	0001	 1
+|	OR	5 | 1	0101 | 0001	0101	 5
+~	NOT	~ 5	 ~0101	1010	 10
+^	XOR	5 ^ 1	0101 ^ 0001	0100	 4
+<<	Zero fill left shift	5 << 1	0101 << 1	1010	 10
+>>	Signed right shift	5 >> 1	0101 >> 1	0010	  2
+>>>	Zero fill right shift	5 >>> 1	0101 >>> 1	0010	  2
+
