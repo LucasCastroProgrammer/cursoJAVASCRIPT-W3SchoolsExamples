@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Javascript: onde usar.</title>
+	<!-- In this example, a JavaScript function is placed in the <head> section of an HTML page. -->
+	<script>
+		function myFunction(){
+			document.getElementById("demo2").innerHTML = "Parágrafo alterado.";
+		}
+	</script>
+	<!-- Scripts can also be placed in external files.
+	External scripts are practical when the same code is used in many different web pages.
+
+	JavaScript files have the file extension .js.
+
+	To use an external script, put the name of the script file in the src (source) attribute of a <script> tag -->
+	<script src="myScript.js"></script>
+</head>
+<body>
+	<h2>Javascript no body</h2>
+	<p id="demo"></p>
+	<!-- In HTML, JavaScript code must be inserted between <script> and </script> tags. -->
+
+	<!-- A JavaScript function is a block of JavaScript code, that can be executed when "called" for.
+	For example, a function can be called when an event occurs, like when the user clicks a button. -->
+
+	<!-- You can place any number of scripts in an HTML document.
+	Scripts can be placed in the <body>, or in the <head> section of an HTML page, or in both. -->
+	<h2>Uma página WEB</h2>
+	<p id="demo2">Um parágrafo.</p>
+	<button type="button" onclick="myFunction()">Tente agora!</button>
+
+	<!-- In this example, a JavaScript instruction is placed in the <body> section of an HTML page. -->
+	<script>
+		document.getElementById('demo').innerHTML = "Meu primeiro Javascript!";
+
+	</script>
+
+	<!-- You can place an external script reference in <head> or <body> as you like.
+	The script will behave as if it was located exactly where the <script> tag is located. 
+	Placing scripts in external files has some advantages:
+
+	It separates HTML and code
+	It makes HTML and JavaScript easier to read and maintain
+	Cached JavaScript files can speed up page loads
+	To add several script files to one page  - use several script tags.
+	<script src="myScript1.js"></script>
+	<script src="myScript2.js"></script>
+	-->
+
+	<!-- External scripts can be referenced with a full URL or with a path relative to the current web page.
+	-> This example uses a full URL to link to a script:
+	<script src="https://www.w3schools.com/js/myScript1.js"></script>
+	-> This example uses a script located in a specified folder on the current web site.
+	<script src="/js/myScript1.js"></script>
+	-> This example links to a script located in the same folder as the current page.
+	<script src="myScript1.js"></script>
+	-->
+</body>
+</html>
