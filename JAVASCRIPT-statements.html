@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Declarações em Javascript</title>
+</head>
+<body>
+	<h2>Declarações em Javascript</h2>
+	<p>A <b>JavaScript program</b> is a list of <b>statements</b> to be executed by a computer.</p>
+	<p id="demo"></p>
+
+	<!-- A computer program is a list of "instructions" to be "executed" by a computer.
+	In a programming language, these programming instructions are called statements.
+	A JavaScript program is a list of programming statements.
+	In HTML, JavaScript programs are executed by the web browser. -->
+
+	<!-- JavaScript statements are composed of:
+	Values, Operators, Expressions, Keywords, and Comments.
+	Most JavaScript programs contain many JavaScript statements.
+	The statements are executed, one by one, in the same order as they are written.
+	JavaScript programs (and JavaScript statements) are often called JavaScript code. -->
+	<p id="demo2"></p>
+
+	<!-- Semicolons separate JavaScript statements.
+	Add a semicolon at the end of each executable statement -->
+
+	<!-- When separated by semicolons, multiple statements on one line are allowed.
+	a = 5; b = 6; c = a + b; -->
+
+	<!-- JavaScript ignores multiple spaces. You can add white space to your script to make it more readable.
+	var person = "Hege"
+	var person="Hege"
+	A good practice is to put spaces around operators ( = + - * / )
+	var x = y + z;
+	-->
+
+	<script>
+		var x, y, z; //Declaração 1: declara 3 variáveis
+		x = 5; //Declaração 2: atribui valor 5 ao x
+		y = 6; //Declaração 3: atribui valor 6 ao y
+		z = x + y; //Declaração 4: atribui o valor de soma de x e y ao z
+
+		document.getElementById("demo").innerHTML = "O valor de z é " + z + ".";
+
+		//This statement tells the browser to write "Hello Dolly." inside an HTML element with id="demo2"
+		//For best readability, programmers often like to avoid code lines longer than 80 characters. If a JavaScript statement does not fit on one line, the best place to break it is after an operator
+		document.getElementById("demo2").innerHTML = 
+		"Hello Dolly.";
+		document.getElementById("demo3").innerHTML = "How are you?";
+		//JavaScript statements can be grouped together in code blocks, inside curly brackets {...}.The purpose of code blocks is to define statements to be executed together.One place you will find statements grouped together in blocks, is in JavaScript functions
+		
+	</script>
+</body>
+</html>
