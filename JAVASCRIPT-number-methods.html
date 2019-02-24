@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Métodos de números em Javascript.</title>
+</head>
+<body>
+	<!-- Number methods help you work with numbers. -->
+	<script>
+		/*Primitive values (like 3.14 or 2014), cannot have properties and methods (because they are not objects).
+		But with JavaScript, methods and properties are also available to primitive values, because JavaScript treats primitive values as objects when executing methods and properties.*/
+
+		/*The toString() method returns a number as a string.
+		All number methods can be used on any type of numbers (literals, variables, or expressions)*/
+		var x = 123;
+		x.toString(); //retorna 123 da variável x
+		(123).toString(); //retorna 123 literal.
+		(100 + 23).toString(); //retorna 123 da expressão 100 + 23
+
+		/*toExponential() returns a string, with a number rounded and written using exponential notation.
+		A parameter defines the number of characters behind the decimal point*/
+		var x = 9.656;
+		x.toExponential(2);
+		x.toExponential(4);
+		x.toExponential(6);
+		/*The parameter is optional. If you don't specify it, JavaScript will not round the number.*/
+
+		/*toFixed() returns a string, with the number written with a specified number of decimals.*/
+		var x = 9.656;
+		z.toFixed(0); //Arrendonda para 10
+		z.toFixed(2); //Retorna 9.66
+		z.toFixed(4); //Retorna 9.6560
+		z.toFixed(6); //Retorna 9.656000
+
+		//toFixed(2) is perfect for working with money.
+
+		/*toPrecision() returns a string, with a number written with a specified length.*/
+		var x = 9.656;
+		x.toPrecision(); //returns 9.656
+		x.toPrecision(2); //returns 9.7
+		x.toPrecision(4); //returns 9.656
+		x.toPrecision(6); //returns 9.65600
+
+		/*valueOf() returns a number as a number.*/
+		var x = 123;
+		x.valueOf(); //returns 123 from variable x
+		(123).valueOf(); //retorna 123 literal
+		(100 + 23).valueOf(); //retorna 123 da expressão 100 + 23
+
+		/*In JavaScript, a number can be a primitive value (typeof = number) or an object (typeof = object).
+		The valueOf() method is used internally in JavaScript to convert Number objects to primitive values.
+		There is no reason to use it in your code.
+		All JavaScript data types have a valueOf() and a toString() method.*/
+
+		/*There are 3 JavaScript methods that can be used to convert variables to numbers:
+		The Number() method
+		The parseInt() method
+		The parseFloat() method
+		These methods are not number methods, but global JavaScript methods.*/
+
+		/*JavaScript global methods can be used on all JavaScript data types.
+		These are the most relevant methods, when working with numbers:
+		Number()	Returns a number, converted from its argument.
+		parseFloat()	Parses its argument and returns a floating point number
+		parseInt()	Parses its argument and returns an integer
+		*/
+
+		/*Number() can be used to convert JavaScript variables to numbers.*/
+		Number(true); //returns 1
+		Number(false); //returns 0
+		Number("10"); // returns 10
+		Number("   10"); // returns 10
+		Number("10   "); //returns 10
+		Number("  10   "); //returns 10
+		Number("10.33"); //returns 10.33
+		Number("10,33"); //returns NaN
+		Number("10 33"); //returns NaN
+		Number("John"); //returns NaN
+		//If the number cannot be converted, NaN (Not a Number) is returned.
+
+		//Number() can also convert a date to a number
+		Number(new Date("2017-09-30"));
+		//The Number() method above returns the number of milliseconds since 1.1.1970.
+
+		/*parseInt() parses a string and returns a whole number. Spaces are allowed. Only the first number is returned.*/
+		parseInt("10"); //retorna 10
+		parseInt("10.33"); //retorna 10
+		parseInt("10 20 30"); //retorna 10
+		parseInt("10 years"); //retorna 10
+		parseInt("years 10") //NaN
+		/*If the number cannot be converted, NaN (Not a Number) is returned.*/
+
+		/*parseFloat() parses a string and returns a number. Spaces are allowed. Only the first number is returned.*/
+		parseFloat("10"); //returns 10
+		parseFloat("10.33"); //returns 10.33
+		parseFloat("10 20 30"); //returns 10
+		parseFloat("10 years"); //returns 10
+		parseFloat("years 10"); //returns NaN
+		//If the number cannot be converted, NaN (Not a Number) is returned.
+
+		/*MAX_VALUE returns the largest possible number in JavaScript.*/
+		var x = Number.MAX_VALUE;
+
+		/*MIN_VALUE returns the lowest possible number in JavaScript.*/
+		var x = Number.MIN_VALUE;
+
+		/*POSITIVE_INFINITY is returned on overflow.*/
+		var x = Number.POSITIVE_INFINITY; //returns Infinity
+		var x = 1 / 0; //returns Infinity
+
+		/*NEGATIVE_INFINITY is returned on overflow.*/
+		var x = Number.NEGATIVE_INFINITY; //returns -Infinity
+
+		/*NaN is a JavaScript reserved word indicating that a number is not a legal number.
+		Trying to do arithmetic with a non-numeric string will result in NaN (Not a Number)*/
+		var x = Number.NaN;
+		var x = 100 / "Apple"; //x será NaN.
+
+		/*Number properties belongs to the JavaScript's number object wrapper called Number.
+		These properties can only be accessed as Number.MAX_VALUE.
+		Using myNumber.MAX_VALUE, where myNumber is a variable, expression, or value, will return undefined*/
+		var x = 6;
+		var y = x.MAX_VALUE; //y vira undefined
+	</script>
+</body>
+</html>
