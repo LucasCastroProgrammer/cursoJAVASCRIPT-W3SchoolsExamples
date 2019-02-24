@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Métodos de String em Javascript</title>
+</head>
+<body>
+	<p id="demo"></p>
+	<p id="demo2"></p>
+	<!-- String methods help you to work with strings. -->
+	<!-- Primitive values, like "John Doe", cannot have properties or methods (because they are not objects).
+	But with JavaScript, methods and properties are also available to primitive values, because JavaScript treats primitive values as objects when executing methods and properties. -->
+	<script>
+		/*The length property returns the length of a string.*/
+		var txt = "ASDFGHJKLÇZXCVBNMQWERTYUIOP";
+		var sln = txt.length;
+		document.getElementById("demo").innerHTML = sln;
+
+		/*The indexOf() method returns the index of (the position of) the first occurrence of a specified text in a string.*/
+		var str = "Please locate where 'locate' occurs!";	
+		var pos = str.indexOf("locate");
+		/*The lastIndexOf() method returns the index of the last occurrence of a specified text in a string.*/
+		var pos2 = str.lastIndexOf("locate");
+		/*Both indexOf(), and lastIndexOf() return -1 if the text is not found.*/
+		var pos3 = str.lastIndexOf("John");
+		/*Both methods accept a second parameter as the starting position for the search. The lastIndexOf() methods searches backwards, meaning: if the second parameter is 15, the search starts at position 15, counting from the end, and searches to the beginning of the string.*/
+		var pos4 = str.lastIndexOf("locate", 15);
+		/*The search() method searches a string for a specified value and returns the position of the match.*/
+		var pos5 = str.search("locate");
+		document.getElementById("demo2").innerHTML = pos + " " + pos2 + " " + pos3 + " " + pos4 + " " + pos5;
+		/*JavaScript counts positions from zero.
+		0 is the first position in a string, 1 is the second, 2 is the third ...*/
+
+		/*The two methods, indexOf() and search(), are equal?
+		They accept the same arguments (parameters), and return the same value?
+		The two methods are NOT equal. These are the differences:
+		The search() method cannot take a second start position argument.
+		The indexOf() method cannot take powerful search values (regular expressions).*/
+
+		/*There are 3 methods for extracting a part of a string:
+		slice(start, end)
+		substring(start, end)
+		substr(start, length)*/
+
+		/*slice() extracts a part of a string and returns the extracted part in a new string.
+		The method takes 2 parameters: the start position, and the end position (end not included).
+		This example slices out a portion of a string from position 7 to position 12 (13-1)*/
+		var str = "Apple, Banana, Kiwi";
+		var res = str.slice(7,13);
+		//O valor de res será: Banana
+
+		/*If a parameter is negative, the position is counted from the end of the string. This example slices out a portion of a string from position -12 to position -6.*/
+		var str = "Apple, Banana, Kiwi";
+		var res = str.slice(-12,-6);
+		//O valor de res será: Banana
+
+		/*If you omit the second parameter, the method will slice out the rest of the string.*/
+		var res = str.slice(7);
+		//O valor de res será: Banana, Kiwi
+
+		/*or, counting from the end.*/
+		var res = str.slice(-12);
+		//O valor de res será: Banana, Kiwi
+		//Negative positions do not work in Internet Explorer 8 and earlier.
+
+		/*substring() is similar to slice().
+		The difference is that substring() cannot accept negative indexes.*/
+		var str = "Apple, Banana, Kiwi";
+		var res = str.substring(7,13);
+		//O valor de res será: Banana
+		/*If you omit the second parameter, substring() will slice out the rest of the string.*/
+
+		/*substr() is similar to slice().
+		The difference is that the second parameter specifies the length of the extracted part.*/
+		var str = "Apple, Banana, Kiwi";
+		var res = str.substr(7, 6);
+		//O valor de res será: Banana
+
+		/*If you omit the second parameter, substr() will slice out the rest of the string.*/
+		var str = "Apple, Banana, Kiwi";
+		var res = str.substr(7);
+		//O valor de res será: Banana, Kiwi
+
+		/*If the first parameter is negative, the position counts from the end of the string.*/
+		var res2 = str.substr(-4);
+		//O valor de res2 será: Kiwi
+
+		/*The replace() method replaces a specified value with another value in a string.*/
+		str = "Please visit Microsoft! Welcome to Microsoft";
+		/*By default, the replace() method replaces only the first match.*/
+		/*To replace all matches, use a regular expression with a /g flag (global match).*/
+		var n3 = str.replace(/Microsoft/g,"W3Schools");
+		/*By default, the replace() method is case sensitive. Writing MICROSOFT (with upper-case) will not work.*/
+		var n = str.replace("Microsoft", "W3Schools");
+		/*To replace case insensitive, use a regular expression with an /i flag (insensitive).*/
+		/*Note that regular expressions are written without quotes.*/
+		var n2 = str.replace(/MICROSOFT/i, "W3Schools");
+		//The replace() method does not change the string it is called on. It returns a new string.
+
+		/*A string is converted to upper case with toUpperCase()*/
+		var text1 = "Hello World!";
+		var text2 = text1.toUpperCase();
+
+		/*A string is converted to lower case with toLowerCase().*/
+		var text3 = text1.toLowerCase();
+
+		/*concat() joins two or more strings.*/
+		var text1 = "Hello";
+		var text2 = "World";
+		var text3 = text1.concat(" ", text2);
+
+		/*The concat() method can be used instead of the plus operator. These two lines do the same.*/
+		var text = "Hello".concat("", "World!");
+
+		/*The trim() method removes whitespace from both sides of a string.*/
+		var str = "          Hello World!";
+		alert(str.trim());
+
+		/*The trim() method is not supported in Internet Explorer 8 or lower.*/
+		/*If you need to support IE 8, you can use replace() with a regular expression instead.*/
+		alert(str.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, ''));
+
+		/*You can also use the replace solution above to add a trim function to the JavaScript String.prototype.*/
+		if(!String.prototype.trim){
+			String.prototype.trim = function(){
+				return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
+			};
+		};
+		var str = "          Hello World!";
+		alert(str.trim());
+
+		/*There are 3 methods for extracting string characters:
+		charAt(position)
+		charCodeAt(position)
+		Property access [ ]*/
+		/*The charAt() method returns the character at a specified index (position) in a string.*/
+		var str = "HELLO WORLD";
+		str.charAt(0); //Retorna H
+
+		/*
+		The charCodeAt() method returns the unicode of the character at a specified index in a string:
+		The method returns a UTF-16 code (an integer between 0 and 65535).*/
+		str.charCodeAt(0); //Retorna 72
+
+		/*ECMAScript 5 (2009) allows property access [ ] on strings.*/
+		str[0]; //Retorna H
+
+		/*Property access might be a little unpredictable:
+		It does not work in Internet Explorer 7 or earlier
+		It makes strings look like arrays (but they are not)
+		If no character is found, [ ] returns undefined, while charAt() returns an empty string.
+		It is read only. str[0] = "A" gives no error (but does not work!)*/
+
+		/*If you want to work with a string as an array, you can convert it to an array.*/
+		var txt = "a,b,c,d,e";
+		txt.split(",");
+		txt.split(" ");
+		txt.split("|");
+		function myFunction(){
+			var str = "a,b,c,d,e";
+			var arr = str.split(",");
+			document.getElementById("demo").innerHTML = arr[0];
+		}
+
+		/*If the separator is omitted, the returned array will contain the whole string in index [0].
+		If the separator is "", the returned array will be an array of single characters*/
+		txt.split("");//O resultado será a,b,c,d,e.
+	</script>
+</body>
+</html>
