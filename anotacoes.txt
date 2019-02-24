@@ -134,3 +134,10 @@ Any numeric operand in the operation is converted into a 32 bit number. The resu
  	 	 	 
 2	yield	Pause Function	yield x
 1	,	Comma	5 , 6
+
+-> Propriedades de números em JS:
+MAX_VALUE	Returns the largest number possible in JavaScript
+MIN_VALUE	Returns the smallest number possible in JavaScript
+POSITIVE_INFINITY	Represents infinity (returned on overflow)
+NEGATIVE_INFINITY	Represents negative infinity (returned on overflow)
+NaN	Represents a "Not-a-Number" value
