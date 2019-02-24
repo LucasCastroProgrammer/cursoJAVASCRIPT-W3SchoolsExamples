@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Strings em Javascript</title>
+</head>
+<body>
+	<p id="demo"></p>
+	<p id="demo2"></p>
+	<p id="demo3"></p>
+	<p id="demo4"></p>
+	<p id="demo5"></p>
+	<!-- JavaScript strings are used for storing and manipulating text. -->
+	<script>
+		/*A JavaScript string is zero or more characters written inside quotes.*/
+		var x = "John Doe";
+
+		/*You can use single or double quotes.*/
+		var carName1 = "Volvo XC60"; //Double quotes
+		var carName2 = 'Volvo XC60'; //Single quotes
+
+		/*You can use quotes inside a string, as long as they don't match the quotes surrounding the string*/
+		var answer1 = "It's alright";
+		var answer2 = "He is called 'Johnny'";
+		var answer3 = 'He is called "Johnny"';
+
+		/*The length of a string is found with the built-in length property*/
+		var txt = "ASDFGHJKLÇQWERTYUIOPZXCVBNM";
+		var sln = txt.length;
+		document.getElementById("demo").innerHTML = sln;
+
+		/*Because strings must be written within quotes, JavaScript will misunderstand this string:*/
+		//var x = "We are the so-called "Vikings" from the north.";
+		/*The string will be chopped to "We are the so-called ".
+		The solution to avoid this problem, is to use the backslash escape character.
+		The backslash (\) escape character turns special characters into string characters:
+		\'	'	Single quote
+		\"	"	Double quote
+		\\	\	Backslash*/
+
+		/*The sequence \"  inserts a double quote in a string.*/
+		var x = "We are the so-called \"Vikings\" from the north.";
+
+		/*The sequence \'  inserts a single quote in a string.*/
+		var x = 'It\'s alright.';
+
+		/*The sequence \\  inserts a backslash in a string.*/
+		var x = "The character \\ is callled blackslash.";
+
+		/*
+		\b	Backspace
+		\f	Form Feed
+		\n	New Line
+		\r	Carriage Return
+		\t	Horizontal Tabulator
+		\v	Vertical Tabulator
+		*/
+
+		/*For best readability, programmers often like to avoid code lines longer than 80 characters.
+		If a JavaScript statement does not fit on one line, the best place to break it is after an operator*/
+		/*You can also break up a code line within a text string with a single backslash.*/
+		document.getElementById("demo").innerHTML = "Hello \
+		 Dolly";
+		/*The \ method is not the preferred method. It might not have universal support.
+		Some browsers do not allow spaces behind the \ character.*/
+
+		/*A safer way to break up a string, is to use string addition.*/
+		document.getElementById("demo").innerHTML = "Hello " + "Dolly!";
+
+		/*You cannot break up a code line with a backslash.*/
+		//document.getElementById("demo").innerHTML = \ "Hello Dolly!";
+
+		/*Normally, JavaScript strings are primitive values, created from literals:
+		But strings can also be defined as objects with the keyword new*/
+		var x = "John"; //typeof x will returns string
+		var y = new String("John"); //typeof y will return object
+		/*Don't create strings as objects. It slows down execution speed.
+		The new keyword complicates the code. This can produce some unexpected results:*/
+
+		var z = new String("John");
+
+		/*When using the == operator, equal strings are equal.*/
+		document.getElementById("demo2").innerHTML = (x == y);
+
+		/*When using the === operator, equal strings are not equal, because the === operator expects equality in both type and value.*/
+		document.getElementById("demo3").innerHTML = (x === y);
+
+		/*Or even worse. Objects cannot be compared.*/
+		document.getElementById("demo4").innerHTML = (y == z);
+		document.getElementById("demo5").innerHTML = (y === z);
+		//Note the difference between (x==y) and (x===y).
+		//Comparing two JavaScript objects will always return false.
+	</script>
+</body>
+</html>
