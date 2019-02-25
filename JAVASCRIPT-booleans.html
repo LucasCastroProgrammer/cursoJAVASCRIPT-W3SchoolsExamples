@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Booleanos em Javascript</title>
+</head>
+<body>
+	<p id="demo"></p>
+	<p id="demo2"></p>
+	<p id="demo3"></p>
+	<p id="demo4"></p>
+	<p id="demo5"></p>
+	<p id="demo6"></p>
+	<p id="demo7"></p>
+	<p id="demo8"></p>
+	<p id="demo9"></p>
+
+	<script>
+		/*A JavaScript Boolean represents one of two values: true or false.*/
+		/*Very often, in programming, you will need a data type that can only have one of two values, like
+		YES / NO
+		ON / OFF
+		TRUE / FALSE
+		For this, JavaScript has a Boolean data type. It can only take the values true or false.*/
+
+		/*You can use the Boolean() function to find out if an expression (or a variable) is true.*/
+		document.getElementById("demo").innerHTML = Boolean(10 > 9); //pode colocar (10 > 9) ou 10 > 9
+
+		/*
+		Comparações e condições:
+		==	equal to	if (day == "Monday")
+		>	greater than	if (salary > 9000)
+		<	less than	if (age < 18)*/
+		//The Boolean value of an expression is the basis for all JavaScript comparisons and conditions.
+
+		/*Everything With a "Value" is True*/
+		var b1, b2, b3, b4, b5, b6;
+		b1 = 100;
+		b2 = 3.14;
+		b3 = -15;
+		b4 = "Hello";
+		b5 = "false";
+		b6 = 7 + 1 + 3.14;
+		document.getElementById("demo2").innerHTML = b1 + " " + b2 + " " + b3 + " " + b4 + " " + b5 + " " + b6;
+
+		/*Everything Without a "Value" is False.*/
+		/*The Boolean value of 0 (zero) is false.*/
+		var x = 0;
+		document.getElementById("demo3").innerHTML = Boolean(x);
+
+		/*The Boolean value of -0 (minus zero) is false.*/
+		x = -0;
+		document.getElementById("demo4").innerHTML = Boolean(x);
+
+		/*The Boolean value of "" (empty string) is false*/
+		x = "";
+		document.getElementById("demo5").innerHTML = Boolean(x);
+
+		/*The Boolean value of undefined is false.*/
+		var y;
+		document.getElementById("demo6").innerHTML = Boolean(y);
+
+		/*The Boolean value of null is false.*/
+		x = null;
+		document.getElementById("demo7").innerHTML = Boolean(x);
+
+		/*The Boolean value of false is (you guessed it) false.*/
+		x = false;
+		document.getElementById("demo8").innerHTML = Boolean(x);
+
+		/*The Boolean value of NaN is false.*/
+		x = 10 / "H";
+		document.getElementById("demo9").innerHTML = Boolean(x);
+
+		/*Normally JavaScript booleans are primitive values created from literals:
+		var x = false;
+		But booleans can also be defined as objects with the keyword new:
+		var y = new Boolean(false);*/
+		//Do not create Boolean objects. It slows down execution speed.
+
+		/*When using the == operator, equal booleans are equal.*/
+		var a = false;
+		var b = new Boolean(false);
+		var c = new Boolean(false);
+		//(a == b) é true pois possuem valores iguais.
+
+		/*When using the === operator, equal booleans are not equal, because the === operator expects equality in both type and value.*/
+		// (a === b) é falso porque a e b são de tipos diferentes.
+
+		/*Objects cannot be compared.*/
+		//(b == c) é false pois objetos não podem ser comparados.
+	</script>
+</body>
+</html>
