@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Métodos de obtenção de dados em JS</title>
+</head>
+<body>
+	<p id="demo"></p>
+	<p id="demo2"></p>
+	<p id="demo3"></p>
+	<p id="demo4"></p>
+	<p id="demo5"></p>
+	<p id="demo6"></p>
+	<p id="demo7"></p>
+	<p id="demo8"></p>
+	<p id="demo9"></p>
+	<p id="demo10"></p>
+	<p id="demo11"></p>
+
+	<script>
+		/*These methods can be used for getting information from a date object.*/
+
+		/*The getTime() method returns the number of milliseconds since January 1, 1970.*/
+		var d = new Date();
+		document.getElementById("demo").innerHTML = d.getTime();
+
+		/*The getFullYear() method returns the year of a date as a four digit number.*/
+		var d2 = new Date();
+		document.getElementById("demo2").innerHTML = d2.getFullYear();
+
+		/*The getMonth() method returns the month of a date as a number (0-11).*/
+		var d3 = new Date();
+		document.getElementById("demo3").innerHTML = d3.getMonth();
+		//In JavaScript, the first month (January) is month number 0, so December returns month number 11.
+		//You can use an array of names, and getMonth() to return the month as a name.
+		var d4 = new Date();
+		var months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+		document.getElementById("demo4").innerHTML = months[d.getMonth()];
+
+		/*The getDate() method returns the day of a date as a number (1-31).*/
+		var d5 = new Date();
+		document.getElementById("demo5").innerHTML = d5.getDate();
+
+		/*The getHours() method returns the hours of a date as a number (0-23).*/
+		var d6 = new Date();
+		document.getElementById("demo6").innerHTML = d6.getHours();
+
+		/*The getMinutes() method returns the minutes of a date as a number (0-59).*/
+		document.getElementById("demo7").innerHTML = d.getMinutes();
+
+		/*The getSeconds() method returns the seconds of a date as a number (0-59).*/
+		document.getElementById("demo8").innerHTML = d.getSeconds();
+
+		/*The getMilliseconds() method returns the milliseconds of a date as a number (0-999).*/
+		document.getElementById("demo9").innerHTML = d.getMilliseconds();
+
+		/*The getDay() method returns the weekday of a date as a number (0-6).*/
+		document.getElementById("demo10").innerHTML = d.getDay();
+		/*In JavaScript, the first day of the week (0) means "Sunday", even if some countries in the world consider the first day of the week to be "Monday".*/
+
+		/*You can use an array of names, and getDay() to return the weekday as a name.*/
+		var days = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado", "Domingo"];
+		document.getElementById("demo11").innerHTML = days[d.getDay()];
+	</script>
+</body>
+</html>
