@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Objetos de data em JS.</title>
+</head>
+<body>
+	<p id="demo"></p>
+	<p id="demo2"></p>
+	<p id="demo3"></p>
+	<p id="demo4"></p>
+	<p id="demo5"></p>
+	<p id="demo6"></p>
+	<p id="demo7"></p>
+	<p id="demo8"></p>
+	<p id="demo9"></p>
+	<p id="demo10"></p>
+	<p id="demo11"></p>
+	<p id="demo12"></p>
+	<p id="demo13"></p>
+	<p id="demo14"></p>
+	<p id="demo15"></p>
+	<p id="demo16"></p>
+
+	<script>
+		/*Date objects are created with the new Date() constructor.
+		There are 4 ways to create a new date object*/
+		/*new Date() creates a new date object with the current date and time.*/
+		/*JavaScript will (by default) output dates in full text string format.*/
+		var d = new Date();
+		document.getElementById("demo").innerHTML = d;
+		//Date objects are static. The computer time is ticking, but date objects are not.
+
+		/*new Date(year, month, ...) creates a new date object with a specified date and time.
+		7 numbers specify year, month, day, hour, minute, second, and millisecond (in that order).*/
+		var d2 = new Date(2018,0,24,10,33,30,0);
+		document.getElementById("demo2").innerHTML = d2;
+		//JavaScript counts months from 0 to 11.
+		//January is 0. December is 11.
+
+		/*6 numbers specify year, month, day, hour, minute, second.*/
+		var d3 = new Date(2018,11,24,10,33,30);
+		document.getElementById("demo3").innerHTML = d3;
+
+		/*5 numbers specify year, month, day, hour, and minute.*/
+		var d4 = new Date(2018,11,24,10,33);
+		document.getElementById("demo4").innerHTML = d4;
+
+		/*4 numbers specify year, month, day, and hour.*/
+		var d5 = new Date(2018,11,24,10);
+		document.getElementById("demo5").innerHTML = d5;
+
+		/*3 numbers specify year, month, and day.*/
+		var d6 = new Date(2018, 11, 24);
+		document.getElementById("demo6").innerHTML = d6;
+
+		/*2 numbers specify year and month.*/
+		var d7 = new Date(2018,11);
+		document.getElementById("demo7").innerHTML = d7;
+
+		/*You cannot omit month. If you supply only one parameter it will be treated as milliseconds.*/
+		var d8 = new Date(2018);
+		document.getElementById("demo8").innerHTML = d8;
+
+		/*One and two digit years will be interpreted as 19xx*/
+		var d9 = new Date(99,11,24);
+		var d10 = new Date(9,11,24);
+		document.getElementById("demo9").innerHTML = d9 + " " + d10;
+
+		/*new Date(dateString) creates a new date object from a date string.*/
+		var d11 = new Date("October 13, 2014 11:13:00");
+		document.getElementById("demo10").innerHTML = d11;
+
+		/*JavaScript stores dates as number of milliseconds since January 01, 1970, 00:00:00 UTC (Universal Time Coordinated).
+		Zero time is January 01, 1970 00:00:00 UTC.
+		Now the time is: 1551110510956 milliseconds past January 01, 1970*/
+
+		/*new Date(milliseconds) creates a new date object as zero time plus milliseconds.*/
+		var d12 = new Date(0);
+		document.getElementById("demo11").innerHTML = d12;
+
+		/*01 January 1970 plus 100 000 000 000 milliseconds is approximately 03 March 1973.*/
+		var d13 = new Date(100000000000);
+		document.getElementById("demo12").innerHTML = d13;
+
+		/*January 01 1970 minus 100 000 000 000 milliseconds is approximately October 31 1966.*/
+		var d14 = new Date(-100000000000);
+		document.getElementById("demo13").innerHTML = d14;
+
+		var d15 = new Date(86400000);
+		document.getElementById("demo14").innerHTML = d15;
+
+		/*When a Date object is created, a number of methods allow you to operate on it.
+		Date methods allow you to get and set the year, month, day, hour, minute, second, and millisecond of date objects, using either local time or UTC (universal, or GMT) time.*/
+
+		/*When you display a date object in HTML, it is automatically converted to a string, with the toString() method.*/
+		/**/
+		document.getElementById("demo15").innerHTML = d.toUTCString();
+		document.getElementById("demo16").innerHTML = d.toDateString();
+	</script>
+</body>
+</html>
