@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Break e continue em JS</title>
+</head>
+<body>
+	<p id="demo"></p>
+	<p id="demo2"></p>
+	<p id="demo3"></p>
+
+	<script>
+		/*The break statement "jumps out" of a loop.
+		The continue statement "jumps over" one iteration in the loop.*/
+
+		/*You have already seen the break statement used in an earlier chapter of this tutorial. It was used to "jump out" of a switch() statement.
+		The break statement can also be used to jump out of a loop.
+		The break statement breaks the loop and continues executing the code after the loop (if any)*/
+		var text = "";
+		var i;
+		for(i = 0; i < 10; i++){
+			if(i === 3){ break; }
+			text += "The number is " + i + "<br>";
+		}
+		document.getElementById("demo").innerHTML = text;
+
+		/*The continue statement breaks one iteration (in the loop), if a specified condition occurs, and continues with the next iteration in the loop.*/
+		var text2 = "";
+		var j = 0;
+		for(j = 0; j < 10; j++){
+			if(j === 3){ continue; }
+			text2 += "O número é " + j + "<br>";
+		}
+		document.getElementById("demo2").innerHTML = text2;
+
+		/*To label JavaScript statements you precede the statements with a label name and a colon.*/
+		/*The break and the continue statements are the only JavaScript statements that can "jump out of" a code block.*/
+		/*A code block is a block of code between { and }.*/
+		var cars = ["BMW","Volvo","Saab","Ford"];
+		var text3 = "";
+		list:{
+			text3 += cars[0] + "<br>";
+			text3 += cars[1] + "<br>";
+			break list;
+			text3 += cars[2] + "<br>";
+			text3 += cars[3] + "<br>";
+		}
+		document.getElementById("demo3").innerHTML = text3;
+	</script>
+</body>
+</html>
