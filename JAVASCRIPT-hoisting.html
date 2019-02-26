@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Hoisting em JS</title>
+</head>
+<body>
+	<p id="demo"></p>
+	<p id="demo2"></p>
+	<p id="demo3"></p>
+
+	<script>
+		/*Hoisting is JavaScript's default behavior of moving declarations to the top.*/
+
+		/*In JavaScript, a variable can be declared after it has been used.
+		In other words; a variable can be used before it has been declared.*/
+		x = 5;
+		elem = document.getElementById("demo");
+		elem.innerHTML = x;
+		var x;
+
+		/*To understand this, you have to understand the term "hoisting".
+		Hoisting is JavaScript's default behavior of moving all declarations to the top of the current scope (to the top of the current script or the current function).*/
+
+		//Variables and constants declared with let or const are not hoisted!
+
+		//JavaScript only hoists declarations, not initializations.
+		//Example 1 does not give the same result as Example 2.
+		var a = 5;
+		var b = 7;
+		document.getElementById("demo2").innerHTML = a + " " + b;
+
+		var c = 5;
+		document.getElementById("demo3").innerHTML = c + " " + d;
+		d = 7;
+
+		/*Hoisting is (to many developers) an unknown or overlooked behavior of JavaScript.
+		If a developer doesn't understand hoisting, programs may contain bugs (errors).
+		To avoid bugs, always declare all variables at the beginning of every scope.
+		Since this is how JavaScript interprets the code, it is always a good rule.
+		JavaScript in strict mode does not allow variables to be used if they are not declared.
+		Study "use strict" in the next chapter.*/
+	</script>
+</body>
+</html>
