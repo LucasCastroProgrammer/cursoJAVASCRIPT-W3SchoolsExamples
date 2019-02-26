@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Tipos de conversão em JS</title>
+</head>
+<body>
+	<p id="demo"></p>
+	<p id="demo2"></p>
+	<p id="demo3"></p>
+	<p id="demo4"></p>
+	<p id="demo5"></p>
+	<p id="demo6"></p>
+	<p id="demo7"></p>
+
+	<script>
+		/*Number() converts to a Number, String() converts to a String, Boolean() converts to a Boolean.*/
+
+		/*
+		-> In JavaScript there are 5 different data types that can contain values:
+		string
+		number
+		boolean
+		object
+		function
+		-> There are 6 types of objects:
+		Object
+		Date
+		Array
+		String
+		Number
+		Boolean
+		-> And 2 data types that cannot contain values:
+		null
+		undefined
+		*/
+
+		/*You can use the typeof operator to find the data type of a JavaScript variable.*/
+		document.getElementById("demo").innerHTML = 
+			typeof "John" + "<br>" +
+			typeof 3.14 + "<br>" +
+			typeof NaN + "<br>" +
+			typeof false + "<br>" +
+			typeof [1,2,3,4] + "<br>" +
+			typeof {name:'John', age:34} + "<br>" +
+			typeof new Date() + "<br>" +
+			typeof function (){} + "<br>" +
+			typeof myCar + "<br>" +
+			typeof null;
+
+		/*The data type of NaN is number
+		The data type of an array is object
+		The data type of a date is object
+		The data type of null is object
+		The data type of an undefined variable is undefined *
+		The data type of a variable that has not been assigned a value is also undefined *
+		You cannot use typeof to determine if a JavaScript object is an array (or a date).*/
+
+		/*The typeofoperator is not a variable. It is an operator. Operators ( + - * / ) do not have any data type.
+		But, the typeof operator always returns a string (containing the type of the operand).*/
+
+		/*The constructor property returns the constructor function for all JavaScript variables.*/
+		document.getElementById("demo2").innerHTML = 
+			"John".constructor + "<br>" +
+			(3.14).constructor + "<br>" +
+			false.constructor + "<br>" +
+			[1,2,3,4].constructor + "<br>" +
+			{name:'John', age:34}.constructor + "<br>" +
+			new Date().constructor + "<br>" +
+			function(){}.constructor;
+
+		/*You can check the constructor property to find out if an object is an Array (contains the word "Array").*/
+		var fruits = ["Banana", "Orange", "Apple", "Mango"];
+		document.getElementById("demo3").innerHTML = isArray(fruits);
+
+		function isArray(myArray){
+			return myArray.constructor.toString().indexOf("Array") > -1;
+		}
+		//Or even simpler, you can check if the object is an Array function.
+		document.getElementById("demo4").innerHTML = isArray2(fruits);
+		function isArray2(myArray){
+			return myArray.constructor === Array;
+		}
+
+		/*You can check the constructor property to find out if an object is a Date (contains the word "Date").*/
+		var myDate = new Date();
+		document.getElementById("demo5").innerHTML = isDate(myDate);
+		
+		function isDate(myDate){
+			return myDate.constructor.toString().indexOf("Date") > -1;
+		}
+
+		document.getElementById("demo6").innerHTML = isDate2(myDate);
+		function isDate2(myDate){
+			return myDate.constructor === Date;
+		}
+
+		/*JavaScript variables can be converted to a new variable and another data type:
+		By the use of a JavaScript function
+		Automatically by JavaScript itself.*/
+
+		/*The global method String() can convert numbers to strings.
+		It can be used on any type of numbers, literals, variables, or expressions.*/
+		String(x); //returns a string from a number variable x
+		String(123); //Retorna a string literal do número 123
+		String(100+23); //Retorna a string de um número de uma expressão.
+
+		/*The Number method toString() does the same.*/
+		x.toString();
+		(123).toString();
+		(100 + 23).toString();
+
+		/*toExponential()	Returns a string, with a number rounded and written using exponential notation.
+		toFixed()	Returns a string, with a number rounded and written with a specified number of decimals.
+		toPrecision()	Returns a string, with a number written with a specified length.*/
+
+		/*The global method String() can convert booleans to strings.*/
+		String(false); // retorna false;
+		String(true); //retorna true;
+
+		/*The Boolean method toString() does the same.*/
+		false.toString(); //retorna false
+		true.toString(); //retorna true
+
+		/*The global method String() can convert dates to strings.*/
+		String(Date()); //Retorna data, hora e fuso-horário atual
+
+		/*The Date method toString() does the same.*/
+		Date().toString(); //Retorna data, hora e fuso-horário atual
+
+		/*The global method Number() can convert strings to numbers.
+		Strings containing numbers (like "3.14") convert to numbers (like 3.14).
+		Empty strings convert to 0.
+		Anything else converts to NaN (Not a Number).*/
+		Number("3.14"); //retorna 3.14
+		Number(" "); //retorna 0
+		Number("") //retorna 0
+		Number("99 88"); //retorna NaN
+
+		/*parseFloat()	Parses a string and returns a floating point number.
+		parseInt()	Parses a string and returns an integer.*/
+
+		/*The unary + operator can be used to convert a variable to a number.*/
+		var y = "5"; //y é uma string
+		var x = + y; //x é um número
+
+		/*If the variable cannot be converted, it will still become a number, but with the value NaN (Not a Number).*/
+		var y = "John"; //y é uma string
+		var x = + y; //x é um número (NaN)
+
+		/*The global method Number() can also convert booleans to numbers.*/
+		Number(false); //retorna 0;
+		Number(true); //retorna 1;
+
+		/*The global method Number() can be used to convert dates to numbers.*/
+		var d = new Date();
+		Number(d);
+		//The date method getTime() does the same.
+		d.getTime();
+
+		/*
+		When JavaScript tries to operate on a "wrong" data type, it will try to convert the value to a "right" type. The result is not always what you expect*/
+		5 + null //retorna 5 porque null converte pra 0
+		"5" + null //retorna "5null" porque null converte pra null
+		"5" + 2 //retorna 52 porque 2 converte pra "2"
+		"5" - 2 //retorna 3 porque "5" converte pra 5
+		"5" * 2 //retorna 10 porque "5" e "2" são convertidos para 5 e 2
+
+		/*JavaScript automatically calls the variable's toString() function when you try to "output" an object or a variable.
+		if myVar = {name:"Fjohn"}  // toString converts to "[object Object]"
+		if myVar = [1,2,3,4]       // toString converts to "1,2,3,4"
+		if myVar = new Date()      // toString converts to "Fri Jul 18 2014 09:08:55 GMT+0200"*/
+
+		/*Numbers and booleans are also converted, but this is not very visible.
+		// if myVar = 123             // toString converts to "123"
+		// if myVar = true            // toString converts to "true"
+		// if myVar = false           // toString converts to "false"
+		*/
+	</script>
+</body>
+</html>
