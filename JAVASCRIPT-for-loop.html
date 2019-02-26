@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Loop for em JS</title>
+</head>
+<body>
+	<p id="demo"></p>
+	<p id="demo2"></p>
+	<p id="demo3"></p>
+
+	<script>
+		/*Loops can execute a block of code a number of times.*/
+
+		/*Loops are handy, if you want to run the same code over and over again, each time with a different value.*/
+		var cars = ["BMW","Volvo","Saab","Ford","Fiat","Audi"];
+		var text = "";
+		var i;
+		for(i = 0; i < cars.length; i++){
+			text += cars[i] + "<br>";
+		}
+		document.getElementById("demo").innerHTML = text;
+
+		/*JavaScript supports different kinds of loops:
+		for - loops through a block of code a number of times
+		for/in - loops through the properties of an object
+		while - loops through a block of code while a specified condition is true
+		do/while - also loops through a block of code while a specified condition is true.*/
+
+		/*For:
+		Statement 1 is executed (one time) before the execution of the code block.
+		Statement 2 defines the condition for executing the code block.
+		Statement 3 is executed (every time) after the code block has been executed.*/
+		var text = "";
+		var i;
+		for(i = 0; i < 5; i++){
+			text += "O número é " + i + "<br>";
+		}
+		document.getElementById("demo2").innerHTML = text;
+		/*Statement 1 sets a variable before the loop starts (var i = 0).
+		Statement 2 defines the condition for the loop to run (i must be less than 5).
+		Statement 3 increases a value (i++) each time the code block in the loop has been executed.*/
+
+		/*Normally you will use statement 1 to initialize the variable used in the loop (i = 0).
+		This is not always the case, JavaScript doesn't care. Statement 1 is optional.
+		You can initiate many values in statement 1 (separated by comma)*/
+		/*And you can omit statement 1 (like when your values are set before the loop starts).*/
+
+		/*Often statement 2 is used to evaluate the condition of the initial variable.
+		This is not always the case, JavaScript doesn't care. Statement 2 is also optional.
+		If statement 2 returns true, the loop will start over again, if it returns false, the loop will end.
+		If you omit statement 2, you must provide a break inside the loop. Otherwise the loop will never end. This will crash your browser.*/
+
+		/*Often statement 3 increments the value of the initial variable.
+		This is not always the case, JavaScript doesn't care, and statement 3 is optional.
+		Statement 3 can do anything like negative increment (i--), positive increment (i = i + 15), or anything else.
+		Statement 3 can also be omitted (like when you increment your values inside the loop)*/
+
+		/*The JavaScript for/in statement loops through the properties of an object.*/
+		var person = {fName: "John", lName: "Doe", age:25};
+		var text = "";
+		var x;
+		for(x in person){
+			text += person[x] + " ";
+		}
+		document.getElementById("demo3").innerHTML = text;
+	</script>
+</body>
+</html>
