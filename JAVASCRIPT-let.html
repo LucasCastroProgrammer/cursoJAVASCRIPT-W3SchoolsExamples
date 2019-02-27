@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Let em JS</title>
+</head>
+<body>
+	<p id="demo7"></p>
+
+	<script>
+		/*ES2015 introduced two important new JavaScript keywords: let and const.
+		These two keywords provide Block Scope variables (and constants) in JavaScript.
+		Before ES2015, JavaScript had only two types of scope: Global Scope and Function Scope. */
+
+		/*Variables declared Globally (outside any function) have Global Scope.*/
+		var carName = "Volvo";
+		//carName pode ser usado aqui
+		function myFunction(){
+			//carName pode também ser usado aqui
+		}
+		//Global variables can be accessed from anywhere in a JavaScript program.
+
+		/*Variables declared Locally (inside a function) have Function Scope.*/
+		//carName não pode ser usado aqui.
+		function myFunction(){
+			var carName2 = "Volvo";
+			//carName pode ser usado aqui.
+		}
+		//carName não pode ser usado aqui.
+		//Local variables can only be accessed from inside the function where they are declared.
+
+		/*Variables declared with the var keyword can not have Block Scope.
+		Variables declared inside a block {} can be accessed from outside the block.*/
+		{
+			var x = 2;
+		}
+		//x pode ser usado aqui.
+
+		/*Before ES2015 JavaScript did not have Block Scope.
+		Variables declared with the let keyword can have Block Scope.
+		Variables declared inside a block {} can not be accessed from outside the block.*/
+		{
+			let x = 2;
+		}
+		//x não pode ser usado aqui.
+
+		/*Redeclaring a variable using the var keyword can impose problems.
+		Redeclaring a variable inside a block will also redeclare the variable outside the block.*/
+		var x = 10;
+		//aqui, x é 10.
+		{
+			var x = 2;
+			//aqui, x é 2.
+		}
+		//aqui, x é 2.
+
+		/*Redeclaring a variable using the let keyword can solve this problem.
+		Redeclaring a variable inside a block will not redeclare the variable outside the block.*/
+		var x = 10;
+		//aqui, x é 10.
+		{
+			let x = 2;
+			//aqui, x é 2.
+		}
+		//aqui, x é 10.
+
+		//The let keyword is not fully supported in Internet Explorer 11 or earlier.
+
+		/*Using var in a loop.*/
+		var i = 5;
+		for(var i = 0; i < 10; i++){
+			//alguns comandos.
+		}
+		//Aqui i é 10.
+
+		/*Using let in a loop.*/
+		let i2 = 5;
+		for(let i2 = 0; i2 < 10; i2++){
+			//alguns comandos.
+		}
+		//aqui, i é 5.
+		/*In the first example, using var, the variable declared in the loop redeclares the variable outside the loop.
+		In the second example, using let, the variable declared in the loop does not redeclare the variable outside the loop.
+		When let is used to declare the i variable in a loop, the i variable will only be visible within the loop.*/
+
+		/*Variables declared with var and let are quite similar when declared inside a function.
+		They will both have Function Scope.*/
+		function myFunction(){
+			carName3 = "Volvo"; //Escopo de função.
+		}
+		function myFunction(){
+			carName4 = "Fiat"; //escopo da função.
+		}
+
+		/*Variables declared with var and let are quite similar when declared outside a block.
+		They will both have Global Scope*/
+		var a = 2;
+		let b = 2;
+
+		/*With JavaScript, the global scope is the JavaScript environment.
+		In HTML, the global scope is the window object.
+		Global variables defined with the var keyword belong to the window object.*/
+		var carName5 = "Jeep";
+		//pode-se usar window.carName5
+
+		//Global variables defined with the let keyword do not belong to the window object.
+		let carName6 = "Honda";
+		//não pode usar o window.carName6
+
+		/*Redeclaring a JavaScript variable with var is allowed anywhere in a program.*/
+		var c = 2;
+		//aqui, c vale 2.
+
+		var c = 3;
+		//aqui, c vale 3. 
+
+		/*Redeclaring a var variable with let, in the same scope, or in the same block, is not allowed.*/
+		var x = 2;
+		let x2 = 3;
+		{
+			var x = 4;
+			let x2 = 5;
+		}
+
+		/*Redeclaring a let variable with let, in the same scope, or in the same block, is not allowed.*/
+		let x3 = 2;
+		let x4 = 3;
+		{
+			let x5 = 4;
+			let x6 = 5;
+		}
+
+		/*Redeclaring a let variable with var, in the same scope, or in the same block, is not allowed.*/
+		let x7 = 2;
+		let x8 = 3;
+		{
+			let x9 = 4;
+			let x10 = 5;
+		}
+
+		/*Redeclaring a variable with let, in another scope, or in another block, is allowed.*/
+		let x11 = 2;
+		
+		{
+			let x12 = 3;
+		}
+
+		{
+			let x13 = 4;
+		}
+
+		/*Variables defined with var are hoisted to the top. You can use a variable before it is declared.*/
+		carName7 = "Hb20XP";
+		document.getElementById("demo").innerHTML = carName7;
+		var carName7;
+
+		/*Variables defined with let are not hoisted to the top.
+		Using a let variable before it is declared will result in a ReferenceError.
+		The variable is in a "temporal dead zone" from the start of the block until it is declared:*/
+		//Não se pode usar o carName8 aqui.
+		let carName8;
+	</script>
+</body>
+</html>
