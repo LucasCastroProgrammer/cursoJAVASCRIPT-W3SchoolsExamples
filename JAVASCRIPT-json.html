@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>JSON em JS</title>
+</head>
+<body>
+
+	<script>
+		/*JSON is a format for storing and transporting data.
+		JSON is often used when data is sent from a server to a web page.*/
+		
+		/*JSON stands for JavaScript Object Notation
+		JSON is a lightweight data interchange format
+		JSON is language independent *
+		JSON is "self-describing" and easy to understand
+		* The JSON syntax is derived from JavaScript object notation syntax, but the JSON format is text only. Code for reading and generating JSON data can be written in any programming language.*/
+
+		/*This JSON syntax defines an employees object: an array of 3 employee records (objects).*/
+		var text = '{ "employees":[' +
+				'{"firstName":"John", "lastName":"Doe"},' +
+				'{"firstName":"Anna", "lastName":"Smith"},' +
+				'{"firstName":"Peter","lastName":"Jones"} ]}';
+
+		var obj = JSON.parse(text);
+
+
+
+		/*The JSON format is syntactically identical to the code for creating JavaScript objects.
+		Because of this similarity, a JavaScript program can easily convert JSON data into native JavaScript objects.*/
+
+		/*
+		JSON data is written as name/value pairs, just like JavaScript object properties.
+		JSON objects are written inside curly braces.
+		JSON arrays are written inside square brackets.
+		Each object is a record of a person (with a first name and a last name).
+		*/
+
+		document.getElementById("demo").innerHTML = obj.employees[1].firstName + " " + obj.employees[1].lastName;
+	</script>
+</body>
+</html>
