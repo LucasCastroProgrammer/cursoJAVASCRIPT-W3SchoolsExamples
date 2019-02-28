@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Chamada de funções em JS</title>
+</head>
+<body>
+	<p id="demo"></p>
+	<p id="demo2"></p>
+	<p id="demo3"></p>
+
+	<script>
+		/*With the call() method, you can write a method that can be used on different objects.*/
+
+		/*In JavaScript all functions are object methods.
+		If a function is not a method of a JavaScript object, it is a function of the global object (see previous chapter).*/
+		var person = {
+			firstName:"John",
+			lastName:"Doe",
+			fullName: function(city, country){
+				return this.firstName + " " + this.lastName + "," + city + "," + country;
+			}
+		}
+		document.getElementById("demo").innerHTML = person.fullName();
+
+		/*In a function definition, this refers to the "owner" of the function.
+		In the example above, this is the person object that "owns" the fullName function.
+		In other words, this.firstName means the firstName property of this object.*/
+
+		/*The call() method is a predefined JavaScript method.
+		It can be used to invoke (call) a method with an owner object as an argument (parameter).
+		With call(), an object can use a method belonging to another object.*/
+		var person2 = {
+			firstName:"Mary",
+			lastName:"Doe",
+		}
+		document.getElementById("demo2").innerHTML = person.fullName.call(person2);
+
+		//The call() method can accept arguments
+		document.getElementById("demo3").innerHTML = person.fullName.call(person2, "Oslo", "Noruega");
+	</script>
+</body>
+</html>
