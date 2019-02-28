@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Getters e Setters em JS</title>
+</head>
+<body>
+	<p id="demo"></p>
+	<p id="demo2"></p>
+	<p id="demo3"></p>
+
+	<script>
+		/*ECMAScript 5 (2009) introduced Getter and Setters.
+		Getters and setters allow you to define Object Accessors (Computed Properties).*/
+
+		/*This example uses a lang property to get the value of the language property.*/
+		var person = {
+			firstName : "John",
+			lastName : "Doe",
+			language : "en",
+			get lang(){
+				//avaScript can secure better data quality when using getters and setters.
+				//Using the lang property, in this example, returns the value of the language property in upper case.
+				return this.language.toUpperCase();
+			}
+		};
+		document.getElementById("demo").innerHTML = person.lang;
+
+		/*This example uses a lang property to set the value of the language property.*/
+		var person2 = {
+			firstName : "John",
+			lastName : "Doe",
+			language : "",
+			set lang(lang){
+				//Using the lang property, in this example, stores an upper case value in the language property.
+				this.language = lang.toUpperCase();
+			}
+		};
+
+		//Set an object property using a setter:
+		person.lang = "en";
+
+		//Display data from the object:
+		document.getElementById("demo2").innerHTML = person.language;
+
+		/*What is the differences between these two examples?*/
+		/*
+		fullName : function(){
+			return this.firstName + " " + this.lastName;
+		}
+		get fullName(){
+			return this.firstName + " " + this.lastName;
+		}
+		*/
+		/*Example 1 access fullName as a function: person.fullName().
+		Example 2 access fullName as a property: person.fullName.
+		The second example provides simpler syntax.*/
+
+		/*It gives simpler syntax
+		It allows equal syntax for properties and methods
+		It can secure better data quality
+		It is useful for doing things behind-the-scenes*/
+
+		//Um exemplo com um contador
+		/*The Object.defineProperty() method can also be used to add Getters and Setters*/
+		var obj = {counter : 0};
+
+		Object.defineProperty(obj, "reset",{
+			get : function(){
+				this.counter = 0;
+			}
+		});
+		Object.defineProperty(obj, "increment", {
+			get : function(){
+				this.counter++;
+			}
+		});
+		Object.defineProperty(obj, "decrement", {
+			get: function(){
+				this.counter--;
+			}
+		});
+		Object.defineProperty(obj, "add",{
+			set : function(value){
+				this.counter += value;
+			}
+		});
+		Object.defineProperty(obj, "subtract", {
+			set : function(value){
+				this.counter -= value;
+			}
+		});
+
+		//Brincando com o contador
+		obj.reset;
+		obj.add = 5;
+		obj.subtract = 1;
+		obj.increment;
+		obj.decrement;
+		document.getElementById("demo3").innerHTML = obj.counter;
+	</script>
+</body>
+</html>
