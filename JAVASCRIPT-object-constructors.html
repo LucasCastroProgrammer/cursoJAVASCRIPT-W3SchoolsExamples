@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Construtores de objetos em JS</title>
+</head>
+<body>
+	<p id="demo"></p>
+	<p id="demo2"></p>
+	<p id="demo3"></p>
+	<p id="demo4"></p>
+
+	<script>
+		//It is considered good practice to name constructor functions with an upper-case first letter.
+		function Person(first, last, age, eye){
+			this.firstName = first;
+			this.lastName = last;
+			this.age = age;
+			this.eyeColor = eye;
+			//To add a new property to a constructor, you must add it to the constructor function.
+			this.nationality = "Inglês";
+			this.name = function(){
+				return this.firstName + " " + this.lastName;
+			};
+			/*You cannot add a new method to an object constructor the same way you add a new method to an existing object.*/
+			/*Adding methods to an object must be done inside the constructor function.*/
+			this.changeName = function(name){
+				this.lastName = name;
+			}
+		}
+		//This way object properties can have default values.
+
+		/*The examples from the previous chapters are limited. They only create single objects.
+		Sometimes we need a "blueprint" for creating many objects of the same "type".
+		The way to create an "object type", is to use an object constructor function.
+		In the example above, function Person() is an object constructor function.
+		Objects of the same type are created by calling the constructor function with the new keyword*/
+		var myFather = new Person("John", "Doe", 50, "blue");
+		var myMother = new Person("Sally", "Rally", 48, "green");
+
+		document.getElementById("demo").innerHTML = "My father is " + myFather.age + ".";
+
+		/*In JavaScript, the thing called this is the object that "owns" the code.
+		The value of this, when used in an object, is the object itself.
+		In a constructor function this does not have a value. It is a substitute for the new object. The value of this will become the new object when a new object is created.
+		Note that this is not a variable. It is a keyword. You cannot change the value of this.*/
+
+		/*Adding a new property to an existing object is easy.*/
+		myFather.nationality = "Inglês";
+		document.getElementById("demo2").innerHTML = "Meu pai é " + myFather.nationality;
+		/*The property will be added to myFather. Not to myMother. (Not to any other person objects).*/
+
+		/*Adding a new method to an existing object is easy.*/
+		myFather.name = function(){
+			return this.firstName + " " + this.lastName;
+		};
+		document.getElementById("demo3").innerHTML = "Meu pai se chama " + myFather.name() + "!";
+
+		/*You cannot add a new property to an object constructor the same way you add a new property to an existing object.
+		Person.nationality = "English";
+		*/
+
+		/*The changeName() function assigns the value of name to the person's lastName property.*/
+		myMother.changeName("Doe");
+		document.getElementById("demo4").innerHTML = "Minha mãe se chama " + myMother.name() + "!";
+		//JavaScript knows which person you are talking about by "substituting" this with myMother.
+
+		/*JavaScript has built-in constructors for native objects. The Math() object is not in the list. Math is a global object. The new keyword cannot be used on Math.*/
+		var x1 = new Object(); //Um novo objeto do tipo objeto
+		var x2 = new String(); //Um novo objeto string
+		var x3 = new Number(); //Um novo objeto número
+		var x4 = new Boolean(); //Um novo objeto boolean
+		var x5 = new Array(); //Um novo objeto array
+		var x6 = new RegExp(); //Um novo objeto RegExp
+		var x7 = new Function(); //Um novo objeto de função
+		var x8 = new Date(); //Um novo objeto de data
+
+		/*As you can see above, JavaScript has object versions of the primitive data types String, Number, and Boolean. But there is no reason to create complex objects. Primitive values are much faster.
+		ALSO:
+		Use object literals {} instead of new Object().
+		Use string literals "" instead of new String().
+		Use number literals 12345 instead of new Number().
+		Use boolean literals true / false instead of new Boolean().
+		Use array literals [] instead of new Array().
+		Use pattern literals /()/ instead of new RegExp().
+		Use function expressions () {} instead of new Function().*/
+		var x1 = {}; //novo objeto
+		var x2 = ""; //nova string primitiva
+		var x3 = 0; //novo número primitivo
+		var x4 = false; //novo boolean primitivo
+		var x5 = []; //novo objeto de array
+		var x6 = /()/; //novo objeto de regexp
+		var x7 = function(){}; //novo objeto de função
+
+		/*Normally, strings are created as primitives: var firstName = "John"
+		But strings can also be created as objects using the new keyword: var firstName = new String("John")*/
+
+		/*Normally, numbers are created as primitives: var x = 123
+		But numbers can also be created as objects using the new keyword: var x = new Number(123)*/
+
+		/*Normally, booleans are created as primitives: var x = false
+		But booleans can also be created as objects using the new keyword: var x = new Boolean(false)*/
+	</script>
+</body>
+</html>
