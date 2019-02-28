@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Protótipos de objetos em JS</title>
+</head>
+<body>
+	<p id="demo"></p>
+	<p id="demo2"></p>
+
+	<script>
+		/*All JavaScript objects inherit properties and methods from a prototype.*/
+
+		/*All JavaScript objects inherit properties and methods from a prototype:
+		Date objects inherit from Date.prototype
+		Array objects inherit from Array.prototype
+		Person objects inherit from Person.prototype
+		The Object.prototype is on the top of the prototype inheritance chain:
+		Date objects, Array objects, and Person objects inherit from Object.prototype.*/
+
+		/*Sometimes you want to add new properties (or methods) to all existing objects of a given type.
+		Sometimes you want to add new properties (or methods) to an object constructor.*/
+
+		/*The JavaScript prototype property allows you to add new properties to object constructors.*/
+		function Person(first, last, age, eye){
+			this.firstName = first;
+			this.lastName = last;
+			this.age = age;
+			this.eyeColor = eye;
+		}
+
+		Person.prototype.nationality = "English";
+
+		var myFather = new Person("John", "Doe", 50, "blue");
+
+		document.getElementById("demo").innerHTML = "A nacionalidade do meu pai é " + myFather.nationality;
+
+		/*The JavaScript prototype property also allows you to add new methods to objects constructors.*/
+		Person.prototype.name = function(){
+			return this.firstName + " " + this.lastName
+		};
+		document.getElementById("demo2").innerHTML = "My father is " + myFather.name();
+
+		//Only modify your own prototypes. Never modify the prototypes of standard JavaScript objects.
+	</script>
+</body>
+</html>
