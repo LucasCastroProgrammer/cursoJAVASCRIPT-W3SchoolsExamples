@@ -13,6 +13,8 @@
 	<p id="demo5"></p>
 	<p id="demo6"></p>
 	<p id="demo7"></p>
+	<p id="demo8"></p>
+	<p id="demo9"></p>
 
 	<script>
 		/*The window.navigator object contains information about the visitor's browser.*/
@@ -50,6 +52,12 @@
 
 		/*The language property returns the browser's language.*/
 		document.getElementById("demo7").innerHTML = navigator.language;
+
+		/*The onLine property returns true if the browser is online.*/
+		document.getElementById("demo8").innerHTML = navigator.onLine;
+
+		/*The javaEnabled() method returns true if Java is enabled.*/
+		document.getElementById("demo9").innerHTML = navigator.javaEnabled();
 	</script>
 </body>
 </html>
