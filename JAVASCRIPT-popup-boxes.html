@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Caixas de Popup em JS</title>
+</head>
+<body>
+	<p id="demo"></p>
+	<p id="demo2"></p>
+
+	<script>
+		/*JavaScript has three kind of popup boxes: Alert box, Confirm box, and Prompt box.*/
+
+		/*An alert box is often used if you want to make sure information comes through to the user.
+		When an alert box pops up, the user will have to click "OK" to proceed.*/
+		alert("Eu sou um caixa de alerta!");
+
+		/*A confirm box is often used if you want the user to verify or accept something.
+		When a confirm box pops up, the user will have to click either "OK" or "Cancel" to proceed.
+		If the user clicks "OK", the box returns true. If the user clicks "Cancel", the box returns false.
+		*/
+		if(confirm("Pressione um botão!")){
+			txt = "Você pressionou OK!";
+		}
+		else{
+			txt = "Você pressionou cancelar!";
+		}
+		document.getElementById("demo").innerHTML = txt;
+
+		/*A prompt box is often used if you want the user to input a value before entering a page.
+		When a prompt box pops up, the user will have to click either "OK" or "Cancel" to proceed after entering an input value.
+		If the user clicks "OK" the box returns the input value. If the user clicks "Cancel" the box returns null.
+		The window.prompt() method can be written without the window prefix.*/
+		var person = prompt("Por favor, coloque seu nome!", "Harry Potter");
+		if(person == null || person == ""){
+			txt = "Usuário cancelou o prompt.";
+		} else{
+			txt = "Hello " + person + "! How are you today?";
+		}
+		document.getElementById("demo2").innerHTML = txt;
+
+		/*To display line breaks inside a popup box, use a back-slash followed by the character n.*/
+		alert("Hello\nHow are you?");
+	</script>
+</body>
+</html>
