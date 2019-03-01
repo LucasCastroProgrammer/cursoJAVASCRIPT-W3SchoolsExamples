@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Listas de nós em JS</title>
+</head>
+<body>
+	<p id="demo"></p>
+	<p id="demo2"></p>
+
+	<script>
+		/*A NodeList object is a list (collection) of nodes extracted from a document.
+		A NodeList object is almost the same as an HTMLCollection object.
+		Some (older) browsers return a NodeList object instead of an HTMLCollection for methods like getElementsByClassName().
+		All browsers return a NodeList object for the property childNodes.
+		Most browsers return a NodeList object for the method querySelectorAll().*/
+		var myNodeList = document.querySelectorAll("p");
+		y = myNodeList[1];
+
+		/*The length property defines the number of nodes in a node list.*/
+		myNodeList = document.querySelectorAll("p");
+		document.getElementById("demo").innerHTML = myNodeList.length;
+
+		/*The length property is useful when you want to loop through the nodes in a node list.*/
+		myNodeList = document.querySelectorAll("p");
+		var i;
+		for(i = 0; i < myNodeList.length; i++){
+			myNodeList[i].style.backgroundColor = "red";
+		}
+
+		/*An HTMLCollection (previous chapter) is a collection of HTML elements.
+		A NodeList is a collection of document nodes.
+		A NodeList and an HTML collection is very much the same thing.
+		Both an HTMLCollection object and a NodeList object is an array-like list (collection) of objects.
+		Both have a length property defining the number of items in the list (collection).
+		Both provide an index (0, 1, 2, 3, 4, ...) to access each item like an array.
+		HTMLCollection items can be accessed by their name, id, or index number.
+		NodeList items can only be accessed by their index number.
+		Only the NodeList object can contain attribute nodes and text nodes.
+		A node list is not an array!
+		A node list may look like an array, but it is not.
+		You can loop through the node list and refer to its nodes like an array.
+		However, you cannot use Array Methods, like valueOf(), push(), pop(), or join() on a node list.*/
+	</script>
+</body>
+</html>
