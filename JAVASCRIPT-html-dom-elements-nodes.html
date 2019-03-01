@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Nodes em JS</title>
+</head>
+<body>
+	<div id="div1">
+		<p id="p1">This is a paragraph.</p>
+		<p id="p2">Este é outro parágrafo.</p>
+	</div>
+
+	<script>
+		/*Adding and Removing Nodes (HTML Elements).*/
+		/*To add a new element to the HTML DOM, you must create the element (element node) first, and then append it to an existing element.*/
+		var para = document.createElement("p");
+		var node = document.createTextNode("This is new.");
+		para.appendChild(node);
+		var element = document.getElementById("div1");
+		element.appendChild(para);
+
+		/*
+		This code creates a new <p> element.
+		To add text to the <p> element, you must create a text node first. This code creates a text node.
+		Then you must append the text node to the <p> element.
+		Finally you must append the new element to an existing element.
+		This code finds an existing element.
+		This code appends the new element to the existing element.
+		*/
+
+		/*The appendChild() method in the previous example, appended the new element as the last child of the parent.
+		If you don't want that you can use the insertBefore() method*/
+		para = document.createElement("p");
+		node = document.createTextNode("This is new.");
+		para.appendChild(node);
+
+		element = document.getElementById("div1");
+		child = document.getElementById("p1");
+		element.insertBefore(para, child);
+
+		/*To remove an HTML element, you must know the parent of the element.*/
+		var parent = document.getElementById("div1");
+		var child = document.getElementById("p1");
+		parent.removeChild(child);
+		//The node.remove() method does not work in any versions of the Internet Explorer browser.
+
+		/*
+		This HTML document contains a <div> element with two child nodes (two <p> elements).
+		Find the element with id="div1".
+		Find the <p> element with id="p1".
+		Remove the child from the parent.
+		It would be nice to be able to remove an element without referring to the parent.
+		But sorry. The DOM needs to know both the element you want to remove, and its parent.
+		Here is a common workaround: Find the child you want to remove, and use its parentNode property to find the parent.
+		*/
+		
+		/*To replace an element to the HTML DOM, use the replaceChild() method.*/
+		parent.replaceChild(para, child);
+	</script>
+</body>
+</html>
