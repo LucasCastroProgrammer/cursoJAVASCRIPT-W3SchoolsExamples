@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>EventListener em JS</title>
+</head>
+<body>
+	<!-- The addEventListener() method attaches an event handler to the specified element.
+	The addEventListener() method attaches an event handler to an element without overwriting existing event handlers.
+	You can add many event handlers to one element.
+	You can add many event handlers of the same type to one element, i.e two "click" events.
+	You can add event listeners to any DOM object not only HTML elements. i.e the window object.
+	The addEventListener() method makes it easier to control how the event reacts to bubbling.
+	When using the addEventListener() method, the JavaScript is separated from the HTML markup, for better readability and allows you to add event listeners even when you do not control the HTML markup.
+	You can easily remove an event listener by using the removeEventListener() method. -->
+	<button id="myBtn">Tente agora!</button>
+	<p id="demo"></p>
+	<!-- The first parameter is the type of the event (like "click" or "mousedown").
+	The second parameter is the function we want to call when the event occurs.
+	The third parameter is a boolean value specifying whether to use event bubbling or event capturing. This parameter is optional. -->
+
+	<script>
+		document.getElementById("myBtn").addEventListener("click", displayDate);
+
+		function displayDate(){
+			document.getElementById("demo").innerHTML = Date();
+		}
+
+		/*Alert "Hello World!" when the user clicks on an element.*/
+		element.addEventListener("click", myFunction);
+		function myFunction(){
+			alert("Hello World!");
+		}
+
+		/*The addEventListener() method allows you to add many events to the same element, without overwriting existing events.*/
+		element.addEventListener("click", myFunction);
+		element.addEventListener("click", mySecondFunction);
+		/*You can add events of different types to the same element.*/
+		element.addEventListener("mouseover", myFunction);
+		element.addEventListener("click", mySecondFunction);
+		element.addEventListener("mouseout", myThirdFunction);
+
+		/*The addEventListener() method allows you to add event listeners on any HTML DOM object such as HTML elements, the HTML document, the window object, or other objects that support events, like the xmlHttpRequest object.*/
+		window.addEventListener("resize", function(){
+			document.getElementById("demo").innerHTML = "Texto!";
+		});
+
+		/*When passing parameter values, use an "anonymous function" that calls the specified function with the parameters.*/
+		element.addEventListener("click", function(){ myFunction(p1, p2); });
+
+		/*There are two ways of event propagation in the HTML DOM, bubbling and capturing.
+		Event propagation is a way of defining the element order when an event occurs. If you have a <p> element inside a <div> element, and the user clicks on the <p> element, which element's "click" event should be handled first?
+		In bubbling the inner most element's event is handled first and then the outer: the <p> element's click event is handled first, then the <div> element's click event.
+		In capturing the outer most element's event is handled first and then the inner: the <div> element's click event will be handled first, then the <p> element's click event.*/
+		document.getElementById("myP").addEventListener("click", myFunction, true);
+		document.getElementById("myDiv").addEventListener("click", myFunction, true);
+
+		/*The removeEventListener() method removes event handlers that have been attached with the addEventListener() method.*/
+		element.removeEventListener("mousemove", myFunction);
+
+		/*The addEventListener() and removeEventListener() methods are not supported in IE 8 and earlier versions. However, for these specific browser versions, you can use the attachEvent() method to attach an event handlers to the element, and the detachEvent() method to remove it.*/
+		var x = document.getElementById("myBtn");
+		if(x.addEventListener){
+			x.addEventListener("click", myFunction);
+		}
+		else if(x.attachEvent){
+			x.attachEvent("onclick", myFunction);
+		}
+	</script>
+</body>
+</html>
