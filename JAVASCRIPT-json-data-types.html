@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Tipos de dados em JSON</title>
+</head>
+<body>
+
+	<script>
+		/*In JSON, values must be one of the following data types:
+		a string
+		a number
+		an object (JSON object)
+		an array
+		a boolean
+		null*/
+
+		/*JSON values cannot be one of the following data types:
+		a function
+		a date
+		undefined*/
+
+		/*Strings in JSON must be written in double quotes.*/
+		{ "name":"John" }
+
+		/*Numbers in JSON must be an integer or a floating point.*/
+		{ "age":30 }
+
+		{
+			"employee":{ "name":"John", "age":30, "city":"New York" }
+			//Objects as values in JSON must follow the same rules as JSON objects.
+		}
+
+		/*Values in JSON can be arrays.*/
+		{
+			"employees":["John", "Anna", "Peter"]
+		}
+
+		/*Values in JSON can be true/false.*/
+		{ "sale":true }
+
+		/*Values in JSON can be null.*/
+		{ "middlename":null }
+	</script>
+</body>
+</html>
