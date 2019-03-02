@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Stringify em JSON</title>
+</head>
+<body>
+
+	<script>
+		/*A common use of JSON is to exchange data to/from a web server.
+		When sending data to a web server, the data has to be a string.
+		Convert a JavaScript object into a string with JSON.stringify().*/
+
+		/*Imagine we have this object in JavaScript.
+		Use the JavaScript function JSON.stringify() to convert it into a string.
+		The result will be a string following the JSON notation.
+		myJSON is now a string, and ready to be sent to a server.*/
+		var obj = { name: "John", age: 30, city: "New York" };
+		var myJSON = JSON.stringify(obj);
+		document.getElementById("demo").innerHTML = myJSON;
+
+		/*It is also possible to stringify JavaScript arrays.*/
+		/*Use the JavaScript function JSON.stringify() to convert it into a string.*/
+		var arr = [ "John", "Peter", "Sally", "Jane" ];
+		var myJSON = JSON.stringify(arr);
+		document.getElementById("demo").innerHTML = myJSON;
+
+		/*In JSON, date objects are not allowed. The JSON.stringify() function will convert any dates into strings.*/
+		var obj = { name: "John", today: new Date(), city : "New York" };
+		var myJSON = JSON.stringify(obj);
+		document.getElementById("demo").innerHTML = myJSON;
+		//You can convert the string back into a date object at the receiver.
+
+		/*In JSON, functions are not allowed as object values.
+		The JSON.stringify() function will remove any functions from a JavaScript object, both the key and the value*/
+		var obj = { name: "John", age: function(){return 30;}, city: "New York" };
+		var myJSON = JSON.stringify(obj);
+		document.getElementById("demo").innerHTML = myJSON;
+		
+		//This can be omitted if you convert your functions into strings before running the JSON.stringify() function.
+		var obj = { name: "John", age: function(){return 30;}, city: "New York" };
+		obj.age = obj.age.toString();
+		var myJSON = JSON.stringify(obj);
+		document.getElementById("demo").innerHTML = myJSON;
+		/*You should avoid using functions in JSON, the functions will lose their scope, and you would have to use eval() to convert them back into functions.*/
+
+		/*The JSON.stringify() function is included in all major browsers and in the latest ECMAScript (JavaScript) standard.*/
+	</script>
+</body>
+</html>
