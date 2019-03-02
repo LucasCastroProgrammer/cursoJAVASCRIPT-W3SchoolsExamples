@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Banco de dados em AJAX</title>
+</head>
+<body>
+
+	<script>
+		/*AJAX can be used for interactive communication with a database.*/
+
+		/*When a user selects a customer in the dropdown list above, a function called showCustomer() is executed. The function is triggered by the onchange event.*/
+		function showCustomer(str) {
+		  var xhttp; 
+		  if (str == "") {
+		    document.getElementById("txtHint").innerHTML = "";
+		    return;
+		  }
+		  xhttp = new XMLHttpRequest();
+		  xhttp.onreadystatechange = function() {
+		    if (this.readyState == 4 && this.status == 200) {
+		    document.getElementById("txtHint").innerHTML = this.responseText;
+		    }
+		  };
+		  xhttp.open("GET", "getcustomer.php?q="+str, true);
+		  xhttp.send();
+		}
+
+		/*The page on the server called by the JavaScript above is a PHP file called "getcustomer.php".
+		The source code in "getcustomer.php" runs a query against a database, and returns the result in an HTML table.
+		<?php
+		$mysqli = new mysqli("servername", "username", "password", "dbname");
+		if($mysqli->connect_error) {
+		  exit('Could not connect');
+		}
+
+		$sql = "SELECT customerid, companyname, contactname, address, city, postalcode, country
+		FROM customers WHERE customerid = ?";
+
+		$stmt = $mysqli->prepare($sql);
+		$stmt->bind_param("s", $_GET['q']);
+		$stmt->execute();
+		$stmt->store_result();
+		$stmt->bind_result($cid, $cname, $name, $adr, $city, $pcode, $country);
+		$stmt->fetch();
+		$stmt->close();
+
+		echo "<table>";
+		echo "<tr>";
+		echo "<th>CustomerID</th>";
+		echo "<td>" . $cid . "</td>";
+		echo "<th>CompanyName</th>";
+		echo "<td>" . $cname . "</td>";
+		echo "<th>ContactName</th>";
+		echo "<td>" . $name . "</td>";
+		echo "<th>Address</th>";
+		echo "<td>" . $adr . "</td>";
+		echo "<th>City</th>";
+		echo "<td>" . $city . "</td>";
+		echo "<th>PostalCode</th>";
+		echo "<td>" . $pcode . "</td>";
+		echo "<th>Country</th>";
+		echo "<td>" . $country . "</td>";
+		echo "</tr>";
+		echo "</table>";
+		?>
+		*/
+	</script>
+</body>
+</html>
