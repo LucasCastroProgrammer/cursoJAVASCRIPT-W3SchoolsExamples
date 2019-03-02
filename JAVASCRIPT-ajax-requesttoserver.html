@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Send a request to a server</title>
+</head>
+<body>
+
+	<script>
+		/*The XMLHttpRequest object is used to exchange data with a server.*/
+
+		/*To send a request to a server, we use the open() and send() methods of the XMLHttpRequest object.*/
+		xhttp.open("GET", "ajax_info.txt", true);
+		xhttp.send();
+		/*open(method, url, async)	Specifies the type of request
+		method: the type of request: GET or POST
+		url: the server (file) location
+		async: true (asynchronous) or false (synchronous)
+		send()	Sends the request to the server (used for GET)
+		send(string)	Sends the request to the server (used for POST)*/
+
+		/*GET is simpler and faster than POST, and can be used in most cases.
+		However, always use POST requests when:
+		A cached file is not an option (update a file or database on the server).
+		Sending a large amount of data to the server (POST has no size limitations).
+		Sending user input (which can contain unknown characters), POST is more robust and secure than GET.*/
+
+		/*A simple GET request.*/
+		/*In the example above, you may get a cached result. To avoid this, add a unique ID to the URL.*/
+		/**/
+		xhttp.open("GET", "demo_get.asp?t=" + Math.random(), true);
+		xhttp.send();
+
+		/*If you want to send information with the GET method, add the information to the URL.*/
+		xhttp.open("GET", "demo_get2.asp?fname=Henry&lname=Ford", true);
+		xhttp.send();
+
+		/*A simple POST request.*/
+		xhttp.open("POST", "demo_post.asp", true);
+		xhttp.send();
+
+		/*To POST data like an HTML form, add an HTTP header with setRequestHeader(). Specify the data you want to send in the send() method.*/
+		xhttp.open("POST", "ajax_test.asp", true);
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhttp.send("fname=Henry&lname=Ford");
+		/*setRequestHeader(header, value)	Adds HTTP headers to the request
+		header: specifies the header name
+		value: specifies the header value*/
+
+		/*The url parameter of the open() method, is an address to a file on a server. The file can be any kind of file, like .txt and .xml, or server scripting files like .asp and .php (which can perform actions on the server before sending the response back).*/
+		xhttp.open("GET", "ajax_test.asp", true);
+
+		/*Server requests should be sent asynchronously.
+		The async parameter of the open() method should be set to true. By sending asynchronously, the JavaScript does not have to wait for the server response, but can instead:
+		execute other scripts while waiting for server response
+		deal with the response after the response is ready*/
+		xhttp.open("GET", "ajax_test.asp", true);
+
+		/*With the XMLHttpRequest object you can define a function to be executed when the request receives an answer.
+		The function is defined in the onreadystatechange property of the XMLHttpResponse object*/
+		xhttp.onreadystatechange = function(){
+			if (this.readyState == 4 && this.status == 200) {
+				document.getElementById("demo").innerHTML = this.responseText;
+			}
+		};
+		xhttp.open("GET", "ajax_info.txt", true);
+		xhttp.send();
+
+		/*To execute a synchronous request, change the third parameter in the open() method to false. Sometimes async = false are used for quick testing. You will also find synchronous requests in older JavaScript code.
+		Since the code will wait for server completion, there is no need for an onreadystatechange function*/
+		xhttp.open("GET", "ajax_info.txt", false);
+		xhttp.send();
+		document.getElementById("demo").innerHTML = xhttp.responseText;
+
+		/*Synchronous XMLHttpRequest (async = false) is not recommended because the JavaScript will stop executing until the server response is ready. If the server is busy or slow, the application will hang or stop.
+		Synchronous XMLHttpRequest is in the process of being removed from the web standard, but this process can take many years.
+		Modern developer tools are encouraged to warn about using synchronous requests and may throw an InvalidAccessError exception when it occurs.*/
+	</script>
+</body>
+</html>
