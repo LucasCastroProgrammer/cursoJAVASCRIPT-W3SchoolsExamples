@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>JSONP</title>
+	<!-- JSONP stands for JSON with Padding.
+	Requesting a file from another domain can cause problems, due to cross-domain policy.
+	Requesting an external script from another domain does not have this problem.
+	JSONP uses this advantage, and request files using the script tag instead of the XMLHttpRequest object. -->
+	<script src="demo_jsonp.php"></script>
+</head>
+<body>
+
+	<script>
+		/*JSONP is a method for sending JSON data without worrying about cross-domain issues.
+		JSONP does not use the XMLHttpRequest object.
+		JSONP uses the <script> tag instead.*/
+
+		/*The file on the server wraps the result inside a function call.
+		<?php
+		$myJSON = '{ "name":"John", "age":30, "city":"New York" }';
+		echo "myFunc(".$myJSON.");";
+		?>
+		*/
+
+		/*The result returns a call to a function named "myFunc" with the JSON data as a parameter.*/
+
+		/*The function named "myFunc" is located on the client, and ready to handle JSON data.*/
+		function myFunc(myObj){
+			document.getElementById("demo").innerHTML = myObj.name;
+		}
+
+		/*The example above will execute the "myFunc" function when the page is loading, based on where you put the script tag, which is not very satisfying.*/
+		function clickButton(){
+			var s = document.createElement("script");
+			s.src = "demo_jsonp.php";
+			document.body.appendChild(s);
+		}
+
+		/*Make the example dynamic by sending JSON to the php file, and let the php file return a JSON object based on the information it gets.
+		<?php
+		header("Content-Type: application/json; charset=UTF-8");
+		$obj = json_decode($_GET["x"], false);
+		$conn = new mysqli("myServer", "myUser", "myPassword", "Northwind");
+		$result = $conn->query("SELECT name FROM ".$obj->$table." LIMIT ".$obj->$limit);
+		$outp = array();
+		$outp = $result->fetch_all(MYSQLI_ASSOC);
+		echo "myFunc(".json_encode($outp).")";
+		?>
+		*/
+
+		/*Convert the request into an object, using the PHP function json_decode().
+		Access the database, and fill an array with the requested data.
+		Add the array to an object.
+		Convert the array into JSON using the json_encode() function.
+		Wrap "myFunc()" around the return object.*/
+
+		/*Convert the request into an object, using the PHP function json_decode().
+		Access the database, and fill an array with the requested data.
+		Add the array to an object.
+		Convert the array into JSON using the json_encode() function.
+		Wrap "myFunc()" around the return object.*/
+
+		function clickButton() {
+		  var obj, s
+		  obj = { table: "products", limit: 10 };
+		  s = document.createElement("script");
+		  s.src = "jsonp_demo_db.php?x=" + JSON.stringify(obj);
+		  document.body.appendChild(s);
+		}
+		function myFunc(myObj) {
+		  var x, txt = "";
+		  for (x in myObj) {
+		    txt += myObj[x].name + "<br>";
+		  }
+		  document.getElementById("demo").innerHTML = txt;
+		}
+
+		/*When you have no control over the server file, how do you get the server file to call the correct function?*/
+		function clickButton() {
+		  var s = document.createElement("script");
+		  s.src = "jsonp_demo_db.php?callback=myDisplayFunction";
+		  document.body.appendChild(s);
+		}
+	</script>
+</body>
+</html>
