@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>JQuery e CSS</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+	<p id="id01">Hello World!</p>
+	<p id="id02">Hello Brazil!</p>
+	<p id="id03">Hello Japan!</p>
+	<p id="id04" style="display: none;">Hello Lucas!</p>
+	<p id="id05">Hello Thiago!</p>
+
+	<script>
+		/*Hide an HTML Element.*/
+		$(document).ready(function(){
+			var myElement = $("#id01");
+			myElement.hide();
+		});
+
+		/*Show an HTML Element.*/
+		$(document).ready(function(){
+			var myElement = $("#id04");
+			myElement.show();
+		});
+
+		/*Change the font size of an HTML element.*/
+		$(document).ready(function(){
+			var myElement = $("#id05");
+			myElement.css("font-size", "35px");
+		});
+	</script>
+</body>
+</html>
