@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>HTML DOM e JQuery</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+	<p id="id01">Hello World!</p>
+	<p id="id02">Hello Brazil!</p>
+	<p id="id03">Hello Japan!</p>
+
+	<p id="demo"></p>
+
+	<script>
+		/*Remove an HTML element.*/
+		$(document).ready(function(){
+			$("#id02").remove();
+		});
+
+		/*Return the parent of an HTML element.*/
+		$(document).ready(function(){
+			var myParent = $("#id03").parent();
+			$("#demo").text(myParent.prop("nodeName"));
+		});
+	</script>
+</body>
+</html>
