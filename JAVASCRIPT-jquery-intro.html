@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>JQuery - Introdução</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+	<p id="id01">Hello World!</p>
+	<p id="demo">Hello Brazil</p>
+
+	<p id="demo2"></p>
+
+	<p class="intro">Hello World!</p>
+	<p class="intro">Hello Brazil!</p>
+	<p class="intro">Hello Japan!</p>
+
+	<p id="demo3"></p>
+	<p id="demo4"></p>
+
+	<script>
+		/*jQuery was created in 2006 by John Resig. It was designed to handle Browser Incompatibilities and to simplify HTML DOM Manipulation, Event Handling, Animations, and Ajax.
+		For more than 10 years, jQuery has been the most popular JavaScript library in the world.
+		However, after JavaScript Version 5 (2009), most of the jQuery utilities can be solved with a few lines of standard JavaScript*/
+
+		$(document).ready(function(){
+			var myElements = $("#id01");
+			$("#demo").text("O texto do id01 é: " + myElements[0].innerHTML);
+		});
+
+		$(document).ready(function(){
+			var myElements2 = $("p");
+			for (var i = 0; i < myElements2.length; i++){
+				$("#demo2").text(myElements2[i].innerHTML);
+			}
+		});
+
+		$(document).ready(function(){
+			var myElements3 = $(".intro");
+			$("#demo3").text("O primeiro parágrafo com classe 'intro' é: " + myElements3[0].innerHTML);
+		});
+		/*Finding elements by class name does not work in Internet Explorer 8 and earlier versions.*/
+
+		$(document).ready(function(){
+			var myElements4 = $("p.intro");
+			$("#demo4").text("O primeiro parágrafo com classe 'intro' é: " + myElements4[0].innerHTML);
+		});
+		/*The querySelectorAll() method does not work in Internet Explorer 8 and earlier versions.*/
+		
+	</script>
+</body>
+</html>
