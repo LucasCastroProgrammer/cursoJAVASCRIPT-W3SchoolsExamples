@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Elementos HTML em JQuery</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+	<p id="id01">Hello World!</p>
+	<p id="id02">Hello Brazil!</p>
+	<p id="demo"></p>
+	<p id="demo2"></p>
+	<p id="demo3"></p>
+
+	<script>
+		/*Set the inner text of an HTML element.*/
+		$(document).ready(function(){
+			var myElement = $("#id01");
+			myElement.text("Hello Lucas!");
+		});
+
+		/*Get the inner text of an HTML element.*/
+		$(document).ready(function(){
+			var myElement2 = $("#id02");
+			var myText = myElement2.text();
+			$("#demo").text(myText);
+		});
+
+		/*Set the HTML content of an element.*/
+		$(document).ready(function(){
+			var myElement3 = $("#demo2");
+			myElement3.html("<p>Hello World!</p>");
+		});
+
+		/*Get the HTML content of an element.*/
+		$(document).ready(function(){
+			var content = $("#demo3").html();
+			$("#demo4").html(content);
+		});
+	</script>
+</body>
+</html>
